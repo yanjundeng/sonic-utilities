@@ -1294,6 +1294,9 @@ def cli_sroute_to_config(ctx, command_str, strict_nh = True):
                     ctx.fail("Nexthop VRF %s does not exist!" % (vrf))
             config_entry["nexthop-vrf"] = nexthop_str[2]
             idx = 3
+        else:
+            # nexthop_str: ['nexthop', ip] or ['nexthop', 'dev', dev_name]
+            idx = 1
 
         if nexthop_str[idx] == 'dev':
             # no nexthop IPs but interface name
